@@ -1,0 +1,23 @@
+[
+    {
+        "id" :"1",
+        "name" : "Anti age Face Treatment",
+        "Price":"199",
+        "details" : "abcde",
+        "img" : "../src/assets/Icon/service1.png"
+    },
+    {
+        "id" :"2",
+        "name" : "Hair Color & Styling",
+        "Price":"199",
+        "details" : "abcde",
+        "img" : "../src/assets/Icon/service2.png"
+    },
+    {
+        "id" :"3",
+        "name" : "Skin Care Treatment",
+        "Price":"199",
+        "details" : "abcde",
+        "img" : "../src/assets/Icon/service3.png"
+    }
+]

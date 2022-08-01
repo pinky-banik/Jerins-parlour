@@ -13,3 +13,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn-pink{
+  @apply btn-primary text-white text-sm py-4 px-8 rounded uppercase transition duration-300 hover:scale-95 transform;;
+}
+.dash-link{
+  @apply px-10 p-4 hover:bg-neutral focus-within:text-primary
+}

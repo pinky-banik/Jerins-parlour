@@ -1,13 +1,20 @@
 import React from 'react';
-import Navbar from '../Components/Navbar';
-import Content from './../Components/Home/Content';
+import Footer from '../Components/Footer';
+import Banner from '../Components/Home/Banner';
+import BusinessReview from '../Components/Home/BusinessReview';
+import Contact from '../Components/Home/Contact';
+import Ourservice from '../Components/Home/Ourservice';
+import Testimonials from '../Components/Home/Testimonials';
 
 const Home = () => {
     return (
         <div>
-            <Navbar/>
-            <h1 className='text-primary'>this is home</h1>
-            <Content/>
+            <Banner/>
+            <Ourservice/>
+            <BusinessReview/>
+            <Testimonials/>
+            <Contact/>
+            <Footer/>
         </div>
     );
 };
