@@ -50,6 +50,7 @@ const Dashboard = () => {
                 <Link className='dash-link' to="/dashboard/orderList">Order List</Link>
                 <Link className='dash-link' to="/dashboard/addService">Add Service</Link>
                 <Link className='dash-link' to="/dashboard/allUsers">All Users</Link>
+                <Link className='dash-link' to="/dashboard/message">Messages</Link>
                 <Link className='dash-link' to="/dashboard/manageService">Manage Service</Link>
                 <button onClick={handleSignOut} className='btn-pink btn'>Log Out</button>
                 

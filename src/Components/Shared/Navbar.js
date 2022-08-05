@@ -2,9 +2,9 @@ import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import auth from './../Firebase/Firbase.init';
-import Loading from './Shared/Loading';
-import logo from '../assets/Image/jerins-parlour.png';
+import logo from '../../assets/Image/jerins-parlour.png';
+import auth from '../../Firebase/Firbase.init';
+import Loading from './Loading';
 
 
 const Navbar = ({sidebar}) => {

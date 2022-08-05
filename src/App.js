@@ -14,6 +14,7 @@ import AllUsers from "./Components/Dashboard.js/AllUsers";
 import ManageServices from "./Components/Dashboard.js/ManageServices";
 import Dashboard from './Pages/Dashboard';
 import RequireAuth from './RequireAuth/RequireAuth';
+import Messages from "./Components/Dashboard.js/Messages";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="review" element={<Review/>}></Route>
           <Route path="book" element={<Book/>}></Route>
           <Route path="bookingList" element={<BookingList/>}></Route>
+          <Route path="message" element={<Messages/>}></Route>
           <Route path="orderList" element={<Orderlist/>}></Route>
           <Route path="addService" element={<AddService/>}></Route>
           <Route path="allUsers" element={<AllUsers/>}></Route>

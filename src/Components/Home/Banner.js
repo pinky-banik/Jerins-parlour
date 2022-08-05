@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../Navbar';
 import banner from '../../assets/Image/banner.png';
+import Navbar from './../Shared/Navbar';
 
 const Banner = () => {
     return (
