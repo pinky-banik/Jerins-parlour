@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import auth from '../../Firebase/Firbase.init';
+import Loading from '../Shared/Loading';
 
 const Contact = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
+    const [loading,setLoading] = useState(false);
+    const { register, formState: { errors }, handleSubmit,reset } = useForm();
 
 
     const onSubmit =async data => {
-        console.log('abcd');
+        setLoading(true);
+        const review ={
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            number: data.number,
+            message: data.message,
+            img: user.photoURL,
+        }
+        fetch("http://localhost:4000/message",{
+        method :'POST',
+        headers :{
+            'content-type' :'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+    .then(res=>res.json())
+    .then(inserted =>{
+        if(inserted.insertedId){
+            toast.success('Message sent successfully');
+            reset();
+            setLoading(false);
+        }
+        else{
+            toast.error('Failed to sending the message');
+        }
+
+    });
+    reset();
+    }
+    if(loading){
+        return <Loading/>
     }
     return (
         <div id="contact" className='bg-secondary py-5'>
@@ -21,7 +58,8 @@ const Contact = () => {
                             type="text"
                             placeholder="First Name"
                             className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
-                            {...register("name")}
+                            {...register("firstName")}
+                            required
                         />
                         
                     </div>
@@ -30,7 +68,7 @@ const Contact = () => {
                             type="text"
                             placeholder="Last Name"
                             className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
-                            {...register("name")}
+                            {...register("lastName")} required
                         />
                         
                     </div>
@@ -43,17 +81,17 @@ const Contact = () => {
                             type="email"
                             placeholder="Email Address"
                             className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
-                            {...register("email")}
+                            {...register("email")} required
                         />
                         
                     </div>
                     <div className="form-control w-full max-w-xs">
                         
                         <input
-                            type="email"
+                            type="text"
                             placeholder="Phone Number"
                             className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
-                            {...register("email")}
+                            {...register("number")} required
                         />
                     </div>
                     </div>
@@ -62,7 +100,7 @@ const Contact = () => {
                             type="text"
                             placeholder="Your Message"
                             className="my-2 p-5 rounded focus:outline-none "
-                            {...register("password")}
+                            {...register("message")} required
                         />
                     </div>
                     <div className='flex justify-center'>

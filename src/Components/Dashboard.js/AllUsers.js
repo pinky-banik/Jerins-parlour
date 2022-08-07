@@ -36,10 +36,10 @@ const AllUser = () => {
       .then(res=>res.json())
       .then(data=>{
         if(data.deletedCount > 0){
-          toast.success("Product deleted Successfully");
+          toast.success("User deleted Successfully");
         }
         else{
-          toast.error("Product deleting unsuccessful");
+          toast.error("User deleting unsuccessful");
         }
       })
     }

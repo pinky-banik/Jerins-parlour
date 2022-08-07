@@ -20,3 +20,6 @@ code {
 .dash-link{
   @apply px-10 p-4 hover:bg-neutral focus-within:text-primary focus-within:bg-base-100
 }
+.input-white{
+  @apply focus:outline-none bg-white  rounded border-none mt-3  p-5
+}

@@ -5,20 +5,15 @@ import {RiDeleteBin2Fill} from  'react-icons/ri';
 import {AiFillStar } from 'react-icons/ai';
 import {AiFillEye} from 'react-icons/ai';
 
-const Messages = () => {
+const AllReview = () => {
     const [loading,setLoading] = useState(true);
     const[review,setReview] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:4000/message")
+        fetch("http://localhost:4000/review")
         .then(res=>res.json())
-        .then(data=>
-       {
-        setReview(data);
+        .then(data=>setReview(data));
         setLoading(false);
-        console.log(data)
-       });
-        
     },[review]);
 
 
@@ -28,17 +23,17 @@ const Messages = () => {
     
 
     const handleDelete = async id =>{
-      await fetch(`http://localhost:4000/message/${id}`,{
+      await fetch(`http://localhost:4000/review/${id}`,{
         method:'DELETE',
       })
       .then(res=>res.json())
       .then(data=>{
         // console.log(data);
         if(data.deletedCount > 0){
-          toast.success("message deleted Successfully");
+          toast.success("Review deleted Successfully");
         }
         else{
-          toast.error("Failed to Delete this message");
+          toast.error("Failed to Delete this review");
         }
       })
     }
@@ -49,10 +44,10 @@ const Messages = () => {
                 {/* <!-- head --> */}
                 <thead>
                 <tr>
-                    <th>Image</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>image</th>
+                    <th>Name</th>
                     <th>email</th>
+                    <th>rating</th>
                     <th>watch</th>
                     <th>Delete</th>
                 </tr>
@@ -63,33 +58,31 @@ const Messages = () => {
                             <tr key={review._id}>
                     <td>
                     <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src={review.img} alt={review.name} />
-                    </div>
-                    </div>
+                        <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
+                            <img src={review.img} alt={review.name} />
+                        </div>
+                        </div>
                     </div>
                     </td>
                     <td>
-                    {review.firstName}
-                    </td>
-                    <td>
-                    {review.lastName}
+                    {review.name}
                     </td>
                     <td>
                     {review.email}
                     </td>
+                    <td ><div className='flex justify-center items-center'><AiFillStar className='mx-2 text-yellow-500 text-2xl'/>{review.rating}</div></td>
                     
-                    <th>
+                    <td>
                     <label htmlFor="my-modal-3" className=" modal-button text-blue-500 text-2xl "><AiFillEye className=''/></label>
                     <input type="checkbox" id="my-modal-3" className="modal-toggle" />
                     <div className="modal">
                     <div className="modal-box relative w-96">
                         <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <p>{review.message}</p>
+                        <p>{review.review}</p>
                     </div>
                     </div>
-                    </th>
+                    </td>
                     <th>
                     <button onClick={()=>handleDelete(review._id)} className="text-red-500 text-2xl"><RiDeleteBin2Fill/></button>
                     </th>
@@ -102,4 +95,4 @@ const Messages = () => {
     );
 };
 
-export default Messages;
+export default AllReview;

@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Error from "./Pages/Error";
-import Review from "./Components/Dashboard.js/Review";
 import BookingList from "./Components/Dashboard.js/BookingList";
 import Book from "./Components/Dashboard.js/Book";
 import Orderlist from "./Components/Dashboard.js/Orderlist";
@@ -15,6 +14,9 @@ import ManageServices from "./Components/Dashboard.js/ManageServices";
 import Dashboard from './Pages/Dashboard';
 import RequireAuth from './RequireAuth/RequireAuth';
 import Messages from "./Components/Dashboard.js/Messages";
+import AddReview from "./Components/Dashboard.js/AddReview";
+import RequireAdmin from './RequireAuth/RequireAdmin';
+import AllReview from "./Components/Dashboard.js/AllReview";
 
 
 function App() {
@@ -27,14 +29,15 @@ function App() {
 
 
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>} >
-          <Route index element={<Review/>}></Route>
-          <Route path="review" element={<Review/>}></Route>
+          <Route index element={<AddReview/>}></Route>
+          <Route path="review" element={<AddReview/>}></Route>
+          <Route path="allReview" element={<AllReview/>}></Route>
           <Route path="book" element={<Book/>}></Route>
           <Route path="bookingList" element={<BookingList/>}></Route>
           <Route path="message" element={<Messages/>}></Route>
           <Route path="orderList" element={<Orderlist/>}></Route>
           <Route path="addService" element={<AddService/>}></Route>
-          <Route path="allUsers" element={<AllUsers/>}></Route>
+          <Route path="allUsers" element={<RequireAdmin><AllUsers/></RequireAdmin>}></Route>
           <Route path="manageService" element={<ManageServices/>}></Route>
         </Route>
 
