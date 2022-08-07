@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import banner from '../../assets/Image/banner.png';
 import Navbar from './../Shared/Navbar';
 
@@ -11,7 +12,7 @@ const Banner = () => {
                 <div className='lg:w-4/5'>
                 <h1 className='mt-5 uppercase md:text-6xl text-3xl font-bold font-sans leading-tight text-black'>Beauty salon<br/> for every women</h1>
                 <p className='my-5 text-accent w-2/3 text-lg font-light' >Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit optio doloremque nostrum fugiat exercitationem dolorum.</p>
-                <button className='btn-pink'>Get an Appointment</button>
+                <button className='btn-pink'><Link to="/service">Get an Appointment</Link>ink</button>
                 </div>
             </div>
             <div className='lg:w-1/2'>

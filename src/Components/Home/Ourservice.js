@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Service from './Service';
+import { Link } from 'react-router-dom';
 
 const Ourservice = () => {
     const[services,setServices] = useState([]);
@@ -18,6 +19,10 @@ const Ourservice = () => {
                     services.map(service=><Service key={service.id} service={service}/>)
                 }
             </div>
+            <div className=' flex justify-center items-center pb-16 pt-5'>
+            <button className='btn btn-pink'><Link to="/service">Explore More</Link></button>
+            </div>
+            
         </div>
     );
 };

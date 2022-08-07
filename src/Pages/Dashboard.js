@@ -4,7 +4,13 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/Firbase.init';
 import { signOut } from 'firebase/auth';
-
+import { AiOutlineHome } from 'react-icons/ai';
+import {MdOutlineRateReview, MdOutlineShoppingCart,MdListAlt,MdOutlinePersonAddAlt} from 'react-icons/md';
+import {RiMessage2Line} from 'react-icons/ri' ;
+import {BsCardChecklist} from 'react-icons/bs';
+import {IoMdAdd,IoPeopleOutline} from 'react-icons/io';
+import {FiGrid,FiUsers}  from  'react-icons/fi';
+ 
 const Dashboard = () => {
     const [user] = useAuthState(auth); 
     const navigate = useNavigate();
@@ -36,22 +42,24 @@ const Dashboard = () => {
             
            <div class="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col items-center justify-center bg-base-200">
+            <div class="drawer-content flex flex-col  bg-base-200 w-full">
+            <div className='p-10'>
             <Outlet/>
+            </div>
             
             </div> 
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label> 
                 <ul class="menu p-4 overflow-y-auto w-72 bg-base-100 text-accent">
-                <Link className='dash-link' to="/">Home</Link>
-                <Link className='dash-link' to="/dashboard/book">Book</Link>
-                <Link className='dash-link' to="/dashboard/bookingList">Booking List</Link>
-                <Link className='dash-link' to="/dashboard/review">Review</Link>
-                <Link className='dash-link' to="/dashboard/orderList">Order List</Link>
-                <Link className='dash-link' to="/dashboard/addService">Add Service</Link>
-                <Link className='dash-link' to="/dashboard/allUsers">All Users</Link>
-                <Link className='dash-link' to="/dashboard/message">Messages</Link>
-                <Link className='dash-link' to="/dashboard/manageService">Manage Service</Link>
+                <li><Link className='dash-link' to="/"><AiOutlineHome className='text-xl'/>Home</Link></li>
+                <li><Link className='dash-link' to="/dashboard/book"><MdOutlineShoppingCart className='text-xl'/>Book</Link></li>
+                <li><Link className='dash-link' to="/dashboard/bookingList"><MdListAlt className='text-xl'/>Booking List</Link></li>
+                <li><Link className='dash-link' to="/dashboard/review"><MdOutlineRateReview className='text-xl'/>Review</Link></li>
+                <li><Link className='dash-link' to="/dashboard/orderList"><BsCardChecklist className='text-xl'/>Order List</Link></li>
+                <li><Link className='dash-link' to="/dashboard/addService"><IoMdAdd className='text-xl'/>Add Service</Link></li>
+                <li><Link className='dash-link' to="/dashboard/allUsers"><FiUsers className='text-xl'/>All Users</Link></li>
+                <li><Link className='dash-link' to="/dashboard/message"><RiMessage2Line className='text-xl'/>Messages</Link></li>
+                <li><Link className='dash-link' to="/dashboard/manageService"><FiGrid className='text-xl'/>Manage Service</Link></li>
                 <button onClick={handleSignOut} className='btn-pink btn'>Log Out</button>
                 
                 </ul>
