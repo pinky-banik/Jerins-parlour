@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/Image/jerins-parlour.png'
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/Firbase.init';
 import { signOut } from 'firebase/auth';
@@ -14,6 +14,7 @@ import {FiGrid,FiUsers}  from  'react-icons/fi';
 const Dashboard = () => {
     const [user] = useAuthState(auth); 
     const navigate = useNavigate();
+    const{paymentId} = useParams();
 
     const handleSignOut = ()=>{
         signOut(auth);
@@ -52,7 +53,7 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
                 <ul className="menu p-4 overflow-y-auto w-72 bg-base-100 text-accent">
                 <li><Link className='dash-link' to="/"><AiOutlineHome className='text-xl'/>Home</Link></li>
-                <li><Link className='dash-link' to="/dashboard/book"><MdOutlineShoppingCart className='text-xl'/>Book</Link></li>
+                <li><Link className='dash-link' to={`/dashboard/book/${paymentId}`}><MdOutlineShoppingCart className='text-xl'/>Book</Link></li>
                 <li><Link className='dash-link' to="/dashboard/bookingList"><MdListAlt className='text-xl'/>Booking List</Link></li>
                 <li><Link className='dash-link' to="/dashboard/review"><MdOutlineRateReview className='text-xl'/>Review</Link></li>
                 <li><Link className='dash-link' to="/dashboard/allReview"><BsUiChecks className='text-xl'/>All Review</Link></li>

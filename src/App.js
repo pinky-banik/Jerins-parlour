@@ -17,6 +17,8 @@ import Messages from "./Components/Dashboard.js/Messages";
 import AddReview from "./Components/Dashboard.js/AddReview";
 import RequireAdmin from './RequireAuth/RequireAdmin';
 import AllReview from "./Components/Dashboard.js/AllReview";
+import Services from "./Pages/Services";
+import ServiceDetails from "./Pages/ServiceDetails";
 
 
 function App() {
@@ -26,13 +28,15 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
+        <Route path='/service' element={<Services/>}></Route>
+        <Route path='/serviceDetails/:serviceId' element={<ServiceDetails/>}></Route>
 
 
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>} >
           <Route index element={<AddReview/>}></Route>
           <Route path="review" element={<AddReview/>}></Route>
           <Route path="allReview" element={<AllReview/>}></Route>
-          <Route path="book" element={<Book/>}></Route>
+          <Route path="book/:paymentId" element={<Book/>}></Route>
           <Route path="bookingList" element={<BookingList/>}></Route>
           <Route path="message" element={<Messages/>}></Route>
           <Route path="orderList" element={<Orderlist/>}></Route>
