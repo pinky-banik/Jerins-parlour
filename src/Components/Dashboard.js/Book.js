@@ -15,7 +15,7 @@ const Book = () => {
     const {img,_id,title,details,price,email} = service;
  
     useEffect(()=>{
-        fetch(`http://localhost:4000/service/${paymentId}`)
+        fetch(`https://mighty-garden-92013.herokuapp.com/service/${paymentId}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data);

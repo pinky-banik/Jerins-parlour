@@ -22,7 +22,7 @@ const Testimonials = () => {
     const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
-        fetch("http://localhost:4000/review")
+        fetch("https://mighty-garden-92013.herokuapp.com/review")
         .then(res=>res.json())
         .then(data=>setTestimonials(data));
     },[]);

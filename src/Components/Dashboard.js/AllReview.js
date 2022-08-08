@@ -10,7 +10,7 @@ const AllReview = () => {
     const[review,setReview] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:4000/review")
+        fetch("https://mighty-garden-92013.herokuapp.com/review")
         .then(res=>res.json())
         .then(data=>setReview(data));
         setLoading(false);
@@ -23,7 +23,7 @@ const AllReview = () => {
     
 
     const handleDelete = async id =>{
-      await fetch(`http://localhost:4000/review/${id}`,{
+      await fetch(`https://mighty-garden-92013.herokuapp.com/review/${id}`,{
         method:'DELETE',
       })
       .then(res=>res.json())

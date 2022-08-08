@@ -23,7 +23,7 @@ const AddReview = () => {
                 review: data.review,
                 img: user.photoURL,
             }
-            fetch("http://localhost:4000/review",{
+            fetch("https://mighty-garden-92013.herokuapp.com/review",{
             method :'POST',
             headers :{
                 'content-type' :'application/json'

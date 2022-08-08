@@ -9,7 +9,7 @@ const Services = () => {
     console.log(services);
 
     useEffect(()=>{
-        fetch("http://localhost:4000/service")
+        fetch("https://mighty-garden-92013.herokuapp.com/service")
         .then(res=>res.json())
         .then(data=>setServices(data));
     },[])

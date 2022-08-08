@@ -14,7 +14,7 @@ const useToken = user => {
             img : img,
         };
         if(email){
-            fetch(`http://localhost:4000/user/${email}`,{
+            fetch(`https://mighty-garden-92013.herokuapp.com/user/${email}`,{
                 method : 'PUT',
                 headers:{
                     'content-type' :'application/json'

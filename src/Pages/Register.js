@@ -78,7 +78,7 @@ const Register = () => {
             name : data.name,
             img : img,
         };
-        await fetch(`http://localhost:4000/user/${data.email}`,{
+        await fetch(`https://mighty-garden-92013.herokuapp.com/user/${data.email}`,{
             method : 'PUT',
             headers:{
                 'content-type' :'application/json'

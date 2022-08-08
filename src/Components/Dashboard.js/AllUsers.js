@@ -12,7 +12,7 @@ const AllUser = () => {
 
 
     useEffect(()=>{
-        fetch("http://localhost:4000/user")
+        fetch("https://mighty-garden-92013.herokuapp.com/user")
         .then(res=>res.json())
         .then(data=>setUsers(data));
         setLoading(false);
@@ -30,7 +30,7 @@ const AllUser = () => {
     //   }
 
     const handleDelete = async id =>{
-      await fetch(`http://localhost:4000/user/${id}`,{
+      await fetch(`https://mighty-garden-92013.herokuapp.com/user/${id}`,{
         method:'DELETE',
       })
       .then(res=>res.json())
@@ -45,7 +45,7 @@ const AllUser = () => {
     }
     
     const handleMakeAdmin = email =>{
-      fetch(`http://localhost:4000/user/admin/${email}`,{
+      fetch(`https://mighty-garden-92013.herokuapp.com/user/admin/${email}`,{
           method:'PUT',
       }).then(res=>res.json())
       .then(data =>{

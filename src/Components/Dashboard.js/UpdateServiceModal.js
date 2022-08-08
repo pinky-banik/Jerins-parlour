@@ -41,7 +41,7 @@ const UpdateServiceModal = ({data,openBooking,setBookingOpen}) => {
             details: data.details || details,
             img: imgUrl || img,
         }
-        await fetch(`http://localhost:4000/service/${_id}`, {
+        await fetch(`https://mighty-garden-92013.herokuapp.com/service/${_id}`, {
             method: 'PUT',
             headers: {
                'content-type': 'application/json',

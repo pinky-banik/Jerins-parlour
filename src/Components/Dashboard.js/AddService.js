@@ -38,7 +38,7 @@ const AddService = () => {
             details: data.details,
             img: img
         }
-        await fetch('http://localhost:4000/service', {
+        await fetch('https://mighty-garden-92013.herokuapp.com/service', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
