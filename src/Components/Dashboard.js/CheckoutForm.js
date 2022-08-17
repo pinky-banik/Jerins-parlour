@@ -4,7 +4,10 @@ import { toast } from 'react-toastify';
 import Moment from 'moment';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../Firebase/Firbase.init';
-const CheckoutForm = ({service}) => {
+import { useNavigate } from 'react-router-dom';
+
+
+const CheckoutForm = ({service,setProcessing}) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError,setCardError] = useState('');
@@ -12,14 +15,17 @@ const CheckoutForm = ({service}) => {
     const [clientSecret,setClientSecret ] = useState('');
     const [disabled,setDisabled] = useState(false);
     const [transectionId,setTransectionId] = useState('');
-    const [processing,setProcessing] = useState(false);
+    console.log(transectionId)
+    
 
     const {img,_id,title,details,price} = service;
     const [user] = useAuthState(auth);
     const {displayName,photoUrl,email} = user;
 
+    const navigate=useNavigate();
+
     useEffect(() => {
-        fetch('http://localhost:4000/create-payment-intent', {
+        fetch('https://mighty-garden-92013.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -85,7 +91,7 @@ const CheckoutForm = ({service}) => {
           );
           if(intentError){
             setCardError(intentError?.message);
-            setProcessing(true);
+            setProcessing(false);
 
           }else{
             setCardError('');
@@ -94,35 +100,44 @@ const CheckoutForm = ({service}) => {
             setDisabled(true);
             toast.success("Payment Successfull");
             console.log(paymentIntent);
+            setProcessing(false);
             
             //store payment data on database
             const formattedDate = Moment().format('YYYY-MM-DD');
-            const payment = {
+            const order = {
+                img : img,
                 name : user.displayName,
                 service : title,
+                details: details,
                 email : user.email,
                 price : price,
-                transectionId : paymentIntent.transectionId,
+                transectionId : paymentIntent.id,
                 date: formattedDate,
+                status: 'Pending',
 
             }
-            // fetch(`http://localhost:4000/service/orders/${_id}`,{
-            //     method:'PATCH',
-            //     headers : {
-            //         'content-type' : 'application/json',
-            //     },
-            //     body : JSON.stringify(payment)
-            // })
-            // .then(res=>res.json())
-            // .then(data=>{
-            //     console.log(data);
-            //     setProcessing(false);
-            // })
+            console.log(order);
+            await fetch(`https://mighty-garden-92013.herokuapp.com/orders`,{
+                method:'POST',
+                headers : {
+                    'content-type' : 'application/json',
+                },
+                body : JSON.stringify(order)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                setProcessing(false);
+                navigate('/dashboard/bookingList');
+            })
           }
     }    
+
+    
     return (
         <div>
-            <form className='border rounded py-2 p-2 my-2' onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
+        <div className=' rounded py-5 focus:outline-none bg-white p-2 my-2'>
         <CardElement className='focus:outline-none'
             options={{
             style: {
@@ -139,9 +154,13 @@ const CheckoutForm = ({service}) => {
             },
             }}
         />
-      <button className='btn btn-primary btn-xs mt-2' type="submit" disabled={!stripe || !clientSecret ||disabled}>
+        </div>
+      <div className='flex justify-between py-2 items-center font-bold'>
+        <h1>Your Service Charge will be <span className='text-primary'>${price}</span></h1>
+      <button className='btn btn-pink mt-2' type="submit" disabled={!stripe || !clientSecret ||disabled}>
         Pay
       </button>
+      </div>
     </form>
      { cardError && <p className='w-96 mx-auto text-red-500'>{cardError}</p>}
      { success && <p className='w-96 mx-auto text-green-500'>{success}</p>}

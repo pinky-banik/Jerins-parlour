@@ -19,6 +19,8 @@ import RequireAdmin from './RequireAuth/RequireAdmin';
 import AllReview from "./Components/Dashboard.js/AllReview";
 import Services from "./Pages/Services";
 import ServiceDetails from "./Pages/ServiceDetails";
+import MyHistory from "./Components/Dashboard.js/MyHistory";
+import AllHistory from "./Components/Dashboard.js/AllHistory";
 
 
 function App() {
@@ -29,20 +31,21 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/service' element={<Services/>}></Route>
-        <Route path='/serviceDetails/:serviceId' element={<ServiceDetails/>}></Route>
+        <Route path='/serviceDetails/:serviceId' element={<RequireAuth><ServiceDetails/></RequireAuth>}></Route>
 
 
         <Route path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>} >
           <Route index element={<AddReview/>}></Route>
           <Route path="review" element={<AddReview/>}></Route>
-          <Route path="allReview" element={<AllReview/>}></Route>
+          <Route path="allReview" element={<RequireAdmin><AllReview/></RequireAdmin>}></Route>
           <Route path="book/:paymentId" element={<Book/>}></Route>
           <Route path="bookingList" element={<BookingList/>}></Route>
-          <Route path="message" element={<Messages/>}></Route>
-          <Route path="orderList" element={<Orderlist/>}></Route>
-          <Route path="addService" element={<AddService/>}></Route>
+          <Route path="history" element={<MyHistory/>} />
+          <Route path="message" element={<RequireAdmin><Messages/></RequireAdmin>}></Route>
+          <Route path="orderList" element={<RequireAdmin><Orderlist/></RequireAdmin>}></Route>
+          <Route path="addService" element={<RequireAdmin><AddService/></RequireAdmin>}></Route>
           <Route path="allUsers" element={<RequireAdmin><AllUsers/></RequireAdmin>}></Route>
-          <Route path="manageService" element={<ManageServices/>}></Route>
+          <Route path="manageService" element={<RequireAdmin><ManageServices/></RequireAdmin>}></Route>
         </Route>
 
 

@@ -11,12 +11,14 @@ const ServiceDetails = () => {
     const navigate = useNavigate();
 
     const {img,_id,title,details,price} = service;
+    console.log(service);
+    console.log(typeof(price));
  
     useEffect(()=>{
-        fetch(`http://localhost:4000/service/${serviceId}`)
+        fetch(`https://mighty-garden-92013.herokuapp.com/service/${serviceId}`)
         .then(res=>res.json())
         .then(data=>setService(data));
-    },[service]);
+    },[serviceId]);
 
     const handlePayment = id =>{
         Swal.fire({
@@ -27,7 +29,7 @@ const ServiceDetails = () => {
           confirmButtonText: "Yes",
         }).then((result) => {
           if (result.isConfirmed) {
-            // navigate(`/dashboard/book/${id}`); 
+            navigate(`/dashboard/book/${id}`); 
           }
         });
 

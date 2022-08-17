@@ -23,7 +23,6 @@ const AllUser = () => {
         return <Loading/>
     }
     
-    
     // const handleId =async tool=>{
     //   setSelectedTool(tool);
     //   setBookingOpen(true)

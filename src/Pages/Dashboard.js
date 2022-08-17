@@ -4,17 +4,19 @@ import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/Firbase.init';
 import { signOut } from 'firebase/auth';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineFileSync, AiOutlineHistory, AiOutlineHome } from 'react-icons/ai';
 import {MdOutlineRateReview, MdOutlineShoppingCart,MdListAlt} from 'react-icons/md';
 import {RiMessage2Line} from 'react-icons/ri' ;
 import {BsCardChecklist,BsUiChecks} from 'react-icons/bs';
 import {IoMdAdd,IoPeopleOutline} from 'react-icons/io';
 import {FiGrid,FiUsers}  from  'react-icons/fi';
+import useAdmin from './../Hooks/useAdmin';
  
 const Dashboard = () => {
     const [user] = useAuthState(auth); 
     const navigate = useNavigate();
     const{paymentId} = useParams();
+    const [admin]= useAdmin(user);
 
     const handleSignOut = ()=>{
         signOut(auth);
@@ -53,15 +55,31 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
                 <ul className="menu p-4 overflow-y-auto w-72 bg-base-100 text-accent">
                 <li><Link className='dash-link' to="/"><AiOutlineHome className='text-xl'/>Home</Link></li>
-                <li><Link className='dash-link' to={`/dashboard/book/${paymentId}`}><MdOutlineShoppingCart className='text-xl'/>Book</Link></li>
-                <li><Link className='dash-link' to="/dashboard/bookingList"><MdListAlt className='text-xl'/>Booking List</Link></li>
-                <li><Link className='dash-link' to="/dashboard/review"><MdOutlineRateReview className='text-xl'/>Review</Link></li>
-                <li><Link className='dash-link' to="/dashboard/allReview"><BsUiChecks className='text-xl'/>All Review</Link></li>
-                <li><Link className='dash-link' to="/dashboard/orderList"><BsCardChecklist className='text-xl'/>Order List</Link></li>
-                <li><Link className='dash-link' to="/dashboard/addService"><IoMdAdd className='text-xl'/>Add Service</Link></li>
+                {/* <li><Link className='dash-link' to={`/dashboard/book/${paymentId}`}><MdOutlineShoppingCart className='text-xl'/>Book</Link></li> */}
+                
+                {
+                    admin ?
+                    <>
+                    <li><Link className='dash-link' to="/dashboard/addService"><IoMdAdd className='text-xl'/>Add Service</Link></li>
                 <li><Link className='dash-link' to="/dashboard/allUsers"><FiUsers className='text-xl'/>All Users</Link></li>
                 <li><Link className='dash-link' to="/dashboard/message"><RiMessage2Line className='text-xl'/>Messages</Link></li>
                 <li><Link className='dash-link' to="/dashboard/manageService"><FiGrid className='text-xl'/>Manage Service</Link></li>
+                <li><Link className='dash-link' to="/dashboard/orderList"><BsCardChecklist className='text-xl'/>Order List</Link></li>
+                <li><Link className='dash-link' to="/dashboard/allReview"><BsUiChecks className='text-xl'/>All Review</Link></li>
+                    </>
+                    :
+                    <>
+                    <li><Link className='dash-link' to="/dashboard/bookingList"><MdListAlt className='text-xl'/>Booking List</Link></li>
+                
+                
+                <li><Link className='dash-link' to="/dashboard/review"><MdOutlineRateReview className='text-xl'/>Review</Link></li>
+                
+                
+                <li><Link className='dash-link' to="/dashboard/history"><AiOutlineHistory className='text-xl'/>My History</Link></li>
+                    </>
+                }
+
+                
                 <button onClick={handleSignOut} className='btn-pink btn'>Log Out</button>
                 
                 </ul>

@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 
 
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper";
+import { Pagination ,FreeMode} from "swiper";
 import Loading from '../Shared/Loading';
 import Testimonial from '../Testimonials/Testimonial';
 
@@ -29,24 +29,38 @@ const Testimonials = () => {
 
 
     return (
-        <div className='h-screen'>
-            <h1 className='text-4xl text-center py-20 text-primary'>Testimonials</h1>
+        <div id="testimonials" className='h-screen mt-20'>
+            <h1 className='text-4xl text-center text-primary'>Testimonials</h1>
             <div>
             <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={5}
-        coverflowEffect={{
-          rotate: 25,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
+            
+        breakpoints={{
+            // when window width is >= 640px
+            // when window width is >= 768px
+            640: {
+              width: 640,
+              slidesPerView: 1,
+            },
+            768: {
+              width: 768,
+              slidesPerView: 2,
+            },
+            1080: {
+              width: 1080,
+              slidesPerView: 3,
+              spaceBetween : 50,
+            },
+          }}
+        pagination={{
+          clickable: true,
         }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
+        grabCursor={true}
+        Navigation={true}
+            // centeredSlides={true}
+            slidesPerView={1}
+            // spaceBetween={10}
+        modules={[Pagination]}
+        className="mySwiper mx-auto"
       >
             {
             testimonials.map(testimonial=>

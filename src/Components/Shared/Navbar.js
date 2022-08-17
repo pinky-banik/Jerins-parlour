@@ -34,8 +34,9 @@ const Navbar = ({sidebar}) => {
   const menuItemslg =
   <>
         <li className='px-2 focus:bg-acent'><Link to = "/">Home</Link></li>
-        <li className='px-2 focus:bg-acent'><Link to = "#services">Services</Link></li>
-        <li className='px-2 focus:bg-acent'><Link to = "#contact">Contact Us</Link></li>
+        <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li className='px-2 focus:bg-acent'><a href="#contact">Contact Us</a></li>
         {
           user?.uid ?
          
@@ -88,8 +89,10 @@ const Navbar = ({sidebar}) => {
         </div>
        }
         <li className='px-2 focus:bg-acent'><Link to = "/">Home</Link></li>
-        <li className='px-2 focus:bg-acent'><Link to = "#services">Services</Link></li>
- 
+        <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
+        <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li className='px-2 focus:bg-acent'><a href="#contact">Contact Us</a></li>
            
           {
            user?.uid  ?

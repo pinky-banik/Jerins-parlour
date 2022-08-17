@@ -48,26 +48,26 @@ const Contact = () => {
     return (
         <div id="contact" className='bg-secondary py-5'>
             <h1 className='mt-5 uppercase md:text-4xl text-2xl font-bold font-sans leading-tight text-center py-20'>Let us  Know</h1>
-            <div className='w-full flex justify-center items-center py-5 '>
+            <div className='py-5 md:w-3/4 lg:w-1/2 mx-auto p-10'>
                 <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className='flex'>
-                    <div className="form-control w-full mr-3 max-w-xs">
+                    <div className="form-control w-full mr-3 ">
                         <input
                             type="text"
                             placeholder="First Name"
-                            className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
+                            className="my-2 p-5 rounded w-full  focus:outline-none"
                             {...register("firstName")}
                             required
                         />
                         
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                         <input
                             type="text"
                             placeholder="Last Name"
-                            className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
+                            className="my-2 p-5 rounded w-full  focus:outline-none"
                             {...register("lastName")} required
                         />
                         
@@ -75,22 +75,22 @@ const Contact = () => {
 
                     </div>
                     <div className='flex'>
-                    <div className="form-control w-full max-w-xs mr-3">
+                    <div className="form-control w-full mr-3">
                         
                         <input
                             type="email"
                             placeholder="Email Address"
-                            className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
+                            className="my-2 p-5 rounded w-full  focus:outline-none"
                             {...register("email")} required
                         />
                         
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full">
                         
                         <input
                             type="text"
                             placeholder="Phone Number"
-                            className="my-2 p-5 rounded w-full max-w-xs focus:outline-none"
+                            className="my-2 p-5 rounded w-full focus:outline-none"
                             {...register("number")} required
                         />
                     </div>
