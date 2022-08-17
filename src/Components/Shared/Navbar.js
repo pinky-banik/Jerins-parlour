@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/Image/jerins-parlour.png';
 import auth from '../../Firebase/Firbase.init';
 import Loading from './Loading';
+import Swal from 'sweetalert2';
 
 
 const Navbar = ({sidebar}) => {
@@ -23,9 +24,20 @@ const Navbar = ({sidebar}) => {
   }
   window.addEventListener('scroll', onChangeHeader);
   const handleSignOut = () =>{
-    signOut(auth);
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure want to logout?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOut(auth);
+        navigate('/');
+        Swal.fire("Logged Out Successfully!", "", "success");
+      }
+    });
     // localStorage.removeItem('accessToken');
-    navigate('/');
+    
   }
     if (loading ) {
       return <Loading/>
@@ -34,7 +46,7 @@ const Navbar = ({sidebar}) => {
   const menuItemslg =
   <>
         <li className='px-2 focus:bg-acent'><Link to = "/">Home</Link></li>
-        <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
+        <li className='px-2 focus:bg-acent'><a href="#service">Services</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li className='px-2 focus:bg-acent'><a href="#contact">Contact Us</a></li>
         {
@@ -90,7 +102,7 @@ const Navbar = ({sidebar}) => {
        }
         <li className='px-2 focus:bg-acent'><Link to = "/">Home</Link></li>
         <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
-        <li className='px-2 focus:bg-acent'><Link to = "/service">Services</Link></li>
+        <li className='px-2 focus:bg-acent'><a href="#service">Services</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li className='px-2 focus:bg-acent'><a href="#contact">Contact Us</a></li>
            

@@ -17,7 +17,6 @@ const Book = () => {
     const {paymentId} = useParams();
     const [user] = useAuthState(auth);
     
-    const navigate = useNavigate();
 
     const {img,_id,title,details,price,email} = service;
  

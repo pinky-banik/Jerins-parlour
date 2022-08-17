@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import "swiper/css/bundle";
 import "./Testimonials.css";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -29,7 +29,7 @@ const Testimonials = () => {
 
 
     return (
-        <div id="testimonials" className='h-screen mt-20'>
+        <div id="testimonials" className=' my-20'>
             <h1 className='text-4xl text-center text-primary'>Testimonials</h1>
             <div>
             <Swiper

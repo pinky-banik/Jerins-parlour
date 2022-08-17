@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { FiEdit } from 'react-icons/fi';
-import { RiDeleteBin2Fill } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 import { useNavigate, Link } from 'react-router-dom';
 import auth from '../../Firebase/Firbase.init';
@@ -10,7 +8,7 @@ import BookingCard from './BookingCard';
 const BookingList = () => {
     const [orders,setOrders] = useState([]);
     const [user] = useAuthState(auth);
-    const {email,displayName} = user;
+    const {email} = user;
 
 
     const navigate = useNavigate();
@@ -54,28 +52,6 @@ const BookingList = () => {
         });
 
     }
-    const handlePayment = id =>{
-        
-        const url = `https://mighty-garden-92013.herokuapp.com/orders/${id}`;
-        
-        Swal.fire({
-          icon: "warning",
-          title: "Are you sure want to pay?",
-          text : "You will redirected to the payment page",
-          showCancelButton: true,
-          confirmButtonText: "Yes",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate(`/payment/${id}`); 
-          }
-        });
-
-    }
-
-
-
-
-
     return (
         <div className=''>
        {

@@ -12,7 +12,7 @@ const Ourservice = () => {
         .then(data=>setServices(data));
     },[]);
     return (
-        <div id="services" className=' bg-white'>
+        <div id="service" className=' bg-white'>
             <h1 className='text-4xl text-center py-20'>Our Awesome <span className='text-primary'>Servcies</span></h1>
             <div className='grid md:grid-cols-3 grid-cols-1 lg:w-5/6 px-5 mx-auto'>
                 {

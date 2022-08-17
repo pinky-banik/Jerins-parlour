@@ -5,7 +5,7 @@ const Service = ({service}) => {
     const navigate = useNavigate();
     const {_id,title,price,details ,img} = service;
     return (
-        <div onClick={()=>navigate(`/serviceDetails/${_id}`)} className="hover:cursor-pointer hover:bg-white m-3 hover:shadow-2xl rounded-lg ">
+        <div  onClick={()=>navigate(`/serviceDetails/${_id}`)} className="hover:cursor-pointer hover:bg-white m-3 hover:shadow-2xl rounded-lg ">
         <figure className="px-10 pt-10 flex justify-center">
         <div className="avatar">
         <div className="w-24 rounded-full">

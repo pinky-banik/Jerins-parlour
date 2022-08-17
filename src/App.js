@@ -20,8 +20,6 @@ import AllReview from "./Components/Dashboard.js/AllReview";
 import Services from "./Pages/Services";
 import ServiceDetails from "./Pages/ServiceDetails";
 import MyHistory from "./Components/Dashboard.js/MyHistory";
-import AllHistory from "./Components/Dashboard.js/AllHistory";
-
 
 function App() {
   return (

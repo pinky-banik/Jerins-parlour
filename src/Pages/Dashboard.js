@@ -11,17 +11,28 @@ import {BsCardChecklist,BsUiChecks} from 'react-icons/bs';
 import {IoMdAdd,IoPeopleOutline} from 'react-icons/io';
 import {FiGrid,FiUsers}  from  'react-icons/fi';
 import useAdmin from './../Hooks/useAdmin';
- 
+import Swal from 'sweetalert2';
 const Dashboard = () => {
     const [user] = useAuthState(auth); 
     const navigate = useNavigate();
     const{paymentId} = useParams();
     const [admin]= useAdmin(user);
 
-    const handleSignOut = ()=>{
-        signOut(auth);
-        navigate('/');
-    }
+    const handleSignOut = () =>{
+        Swal.fire({
+          icon: "warning",
+          title: "Are you sure want to logout?",
+          showCancelButton: true,
+          confirmButtonText: "Yes",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            signOut(auth);
+            navigate('/');
+            Swal.fire("Logged Out Successfully!", "", "success");
+          }
+        });
+        // localStorage.removeItem('accessToken');
+      }
     return (
         <div>
             <div className='flex justify-between p-5 bg-base-100 lg:px-10'>

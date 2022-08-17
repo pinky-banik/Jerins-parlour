@@ -1,5 +1,6 @@
 import React from 'react';
-import {AiFillStar} from 'react-icons/ai';
+import Rating from 'react-rating'; 
+import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
 
 const Testimonial = ({testimonial}) => {
     const {_id,img,name,email,review,rating} = testimonial;
@@ -25,11 +26,16 @@ const Testimonial = ({testimonial}) => {
             
             </div>
             <div className='flex text-2xl py-5 text-primary'>
-                <AiFillStar/>
-                <AiFillStar/>
-                <AiFillStar/>
-                <AiFillStar/>
-                <AiFillStar/>
+            <Rating
+                    initialRating={rating}
+                    readonly
+                    fullSymbol={
+                        <AiFillStar/>
+                    }
+                    emptySymbol={
+                      <AiOutlineStar/>
+                    }
+                  />
             </div>
             
         </div>
