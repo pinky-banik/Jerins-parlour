@@ -3,9 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Footer from '../Components/Shared/Footer';
 import Navbar from './../Components/Shared/Navbar';
 import Swal from 'sweetalert2';
+import Loading from '../Components/Shared/Loading';
 
 const ServiceDetails = () => {
     const[service,setService] = useState([]);
+    const[loading,setLoading] = useState({});
     const {serviceId} = useParams();
 
     const navigate = useNavigate();
@@ -17,8 +19,16 @@ const ServiceDetails = () => {
     useEffect(()=>{
         fetch(`https://mighty-garden-92013.herokuapp.com/service/${serviceId}`)
         .then(res=>res.json())
-        .then(data=>setService(data));
+        .then(data=>{
+            setService(data)
+            setLoading(false)
+        });
     },[serviceId]);
+
+    if(loading)
+    {
+        return <Loading/>
+    }
 
     const handlePayment = id =>{
         Swal.fire({

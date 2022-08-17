@@ -4,9 +4,11 @@ import Swal from 'sweetalert2';
 import { useNavigate, Link } from 'react-router-dom';
 import auth from '../../Firebase/Firbase.init';
 import BookingCard from './BookingCard';
+import Loading from '../Shared/Loading';
 
 const BookingList = () => {
     const [orders,setOrders] = useState([]);
+    const [loading,setLoading] = useState(true);
     const [user] = useAuthState(auth);
     const {email} = user;
 
@@ -19,6 +21,7 @@ const BookingList = () => {
         .then(res=>res.json())
         .then(data=>{
             setOrders(data);
+            setLoading(false);
             console.log(data);
         } 
         );
@@ -51,6 +54,10 @@ const BookingList = () => {
           }
         });
 
+    }
+    if(loading)
+    {
+        return <Loading/>
     }
     return (
         <div className=''>

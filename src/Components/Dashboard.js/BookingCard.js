@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardElement } from '@stripe/react-stripe-js';
+
 
 const BookingCard = ({order}) => {
     const{img,name,service,status,details} = order;
