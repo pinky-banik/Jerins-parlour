@@ -21,7 +21,7 @@ const Testimonial = ({testimonial}) => {
         </div>
         <div className="flex items-center text-start">
             <div className=''>
-                <p className='text-accent '>{review.slice(0,150)}... </p>
+                <p className='text-accent line-clamp-1'>{review}</p>
             </div>
             
             </div>

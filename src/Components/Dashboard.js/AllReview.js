@@ -4,10 +4,13 @@ import { toast } from 'react-toastify';
 import {RiDeleteBin2Fill} from  'react-icons/ri';
 import {AiFillStar } from 'react-icons/ai';
 import {AiFillEye} from 'react-icons/ai';
+import ReviewShowModal from './ReviewShowModal';
 
 const AllReview = () => {
     const [loading,setLoading] = useState(true);
     const[review,setReview] = useState([]);
+    const [selectedBlog, setSelectedBlog] = useState({});
+  const [openBooking, setBookingOpen] = useState(false);
 
     useEffect(()=>{
         fetch("https://mighty-garden-92013.herokuapp.com/review")
@@ -37,6 +40,12 @@ const AllReview = () => {
         }
       })
     }
+
+    const handleId = async (review) => {
+        setSelectedBlog(review);
+        setBookingOpen(true);
+      };
+    
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -74,15 +83,23 @@ const AllReview = () => {
                     <td ><div className='flex justify-center items-center'><AiFillStar className='mx-2 text-yellow-500 text-2xl'/>{review.rating}</div></td>
                     
                     <td>
-                    <label htmlFor="my-modal-3" className=" modal-button text-blue-500 text-2xl "><AiFillEye className=''/></label>
-                    <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-                    <div className="modal">
-                    <div className="modal-box relative w-96">
-                        <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <p>{review.review}</p>
-                    </div>
-                    </div>
-                    </td>
+                  <label
+                    onClick={() => handleId(review)}
+                    htmlFor="reviewShowModal"
+                    className="text-blue-500 text-2xl cursor-pointer"
+                  >
+                    <AiFillEye />
+                  </label>
+                  {
+                    <ReviewShowModal
+                      data={selectedBlog}
+                      openBooking={openBooking}
+                      setBookingOpen={setBookingOpen}
+                    />
+                  }
+                </td>
+
+
                     <th>
                     <button onClick={()=>handleDelete(review._id)} className="text-red-500 text-2xl"><RiDeleteBin2Fill/></button>
                     </th>

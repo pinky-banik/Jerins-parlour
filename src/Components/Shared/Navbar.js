@@ -8,7 +8,7 @@ import Loading from './Loading';
 import Swal from 'sweetalert2';
 
 
-const Navbar = ({sidebar}) => {
+const Navbar = () => {
   const [changeHeader, setChangeHeader] = useState(false);
   const[user, loading] = useAuthState(auth);
   const image = user?.photoURL;

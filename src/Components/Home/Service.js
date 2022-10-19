@@ -16,7 +16,7 @@ const Service = ({service}) => {
         <div className="card-body items-center text-center">
             <h2 className="card-title">{title}</h2>
             <h4 className='text-primary'>${price}</h4>
-            <p className='text start text-sm text-accent'>{details.slice(0,100)}</p>
+            <p className='text start text-sm text-accent'>{details}</p>
             <div className="card-actions">
             
             </div>
