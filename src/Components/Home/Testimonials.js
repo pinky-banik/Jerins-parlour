@@ -54,11 +54,12 @@ const Testimonials = () => {
         pagination={{
           clickable: true,
         }}
+        loop={true}
         grabCursor={true}
         Navigation={true}
             // centeredSlides={true}
             slidesPerView={1}
-            // spaceBetween={10}
+            spaceBetween={10}
         modules={[Pagination]}
         className="mySwiper mx-auto"
       >

@@ -16,12 +16,13 @@ body {
 .swiper {
   width: 100%;
   margin-inline: auto;
-  width: 90%;
 }
 
 .swiper-slide {
   background-position: center;
   background-size: cover;
+  width: 100%;
+  
 }
 
 .swiper-slide img {
@@ -37,5 +38,9 @@ body {
 @media screen and (min-width: 768px) {
   .swiper-container {
     width: 768px;
+    
+  }
+  .swiper-slide{
+    margin-inline: 5%;
   }
 }

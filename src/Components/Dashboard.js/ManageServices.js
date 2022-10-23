@@ -5,6 +5,7 @@ import {RiDeleteBin2Fill} from  'react-icons/ri';
 import {FiEdit} from 'react-icons/fi';
 import { AiFillEye } from 'react-icons/ai';
 import UpdateServiceModal from './UpdateServiceModal';
+import { useNavigate } from 'react-router-dom';
 
 
 const ManageServices = () => {
@@ -12,6 +13,7 @@ const ManageServices = () => {
     const[tools,setTools] = useState([]);
     const [selectedTool,setSelectedTool] = useState({});
     const [openBooking, setBookingOpen] = useState(false);
+    const navigate =  useNavigate();
 
     useEffect(()=>{
         fetch("https://mighty-garden-92013.herokuapp.com/service")
@@ -24,7 +26,6 @@ const ManageServices = () => {
     if(loading){
         return <Loading/>
     }
-    
     
     const handleId =async tool=>{
       setSelectedTool(tool);
@@ -83,15 +84,8 @@ const ManageServices = () => {
           $ {tool.price}
         </td>
         <td>
-                    <label htmlFor="my-modal-3" className=" modal-button text-blue-500 text-2xl "><AiFillEye className=''/></label>
-                    <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-                    <div className="modal">
-                    <div className="modal-box relative w-96">
-                        <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <p>{tool._id}</p>
-                    </div>
-                    </div>
-                    </td>
+        <AiFillEye onClick={()=>navigate(`/serviceDetails/${tool._id}`)} className='text-2xl text-blue-500'/>
+        </td>
         <th>
           <button onClick={()=>handleDelete(tool._id)} className="text-red-500 text-2xl"><RiDeleteBin2Fill/></button>
         </th>

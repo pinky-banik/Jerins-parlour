@@ -5,7 +5,7 @@ import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
 const Testimonial = ({testimonial}) => {
     const {_id,img,name,email,review,rating} = testimonial;
     return (
-        <div className="card w-fit h-72 bg-base-100 hover:shadow-xl p-7 m-24">
+        <div className="card   w-fit md:w-96 bg-base-100 hover:shadow-xl p-5 m-24">
         <div className="sm:flex py-5 t">
         <div className='avatar pr-5'>
         <div className="w-16 h-16 rounded-full ring ring-primary">
@@ -21,7 +21,7 @@ const Testimonial = ({testimonial}) => {
         </div>
         <div className="flex items-center text-start">
             <div className=''>
-                <p className='text-accent line-clamp-1'>{review}</p>
+                <p className='text-accent line-clamp-3'>{review}</p>
             </div>
             
             </div>

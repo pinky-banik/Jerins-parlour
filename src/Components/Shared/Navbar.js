@@ -64,7 +64,7 @@ const Navbar = () => {
               </div>
             </div></label>
             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-            <Link className='mx-auto w-full text-center my-1 hover:bg-gray-200 focus:bg-secondary focus-visible:text-white p-2 rounded-lg' to = "/dashboard">My Profile</Link>
+            <a href="https://pinky-banik.vercel.app/" target="_blank"><button className='mx-auto w-full text-center my-1 hover:bg-gray-200 focus:bg-secondary focus-visible:text-white p-2 rounded-lg'>My Profile</button></a>
             <Link className='mx-auto w-full text-center my-1 hover:bg-gray-200 focus:bg-secondary focus-visible:text-white p-2 rounded-lg' to = "/dashboard">Dashboard</Link>
             <li><button onClick={handleSignOut} className='btn w-full btn-primary cursor-pointer text-white'>Logout</button></li>
             </ul>
